@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:black">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>ASD detection</h2>
+             <h3>A1 Does the person look at you when you call his/her name? </h3><select name="A1_Score" id="resea" required="required">
+		<option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+           
+	   
+        <h3>A2 How easy is it for you to get eye contact with the person?</h3><br><select name="A2_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	    <h3>A3 Does the person point to indicate that he/she want something?</h3><br><select name="A3_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	<h3>A4 Does the person point to share interest with you?</h3><br><select name="A4_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	<h3>A5 Does the person pretend?(e.g.care for dolls talk on a toy phone or different behaviour towards artificial things).</h3><br><select name="A5_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+
+
+	<h3>A6 Does the person follow where you're looking?</h3><br><select name="A6_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	<h3>A7 If you or someone else in the family is visibly upset, does your the person show signs of wanting to comfort them?</h3><br><select name="A7_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	<h3>A8 Would you describe the person's first words </h3><br><select name="A8_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	<h3>A9 Does the person use simple gestures?(eg wave goodbye)</h3><br><select name="A9_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	<h3>A10 Does the person stare at nothing with no apparent purpose?</h3><br><select name="A10_Score" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+
+
+	<h3>AGE</h3>
+            <input id="first" name="age" type="number ">
+
+
+	<h3>gender</h3><br><select name="gender" id="fuel" required="required">
+                <option value="YES">Female</option>
+                <option value="NO">Male</option>
+                
+            </select>
+
+
+
+	<h3>jaundice</h3><br><select name="jaundice" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+	
+	<h3>Does anyone have autism in the family ?</h3><br><select name="autism" id="resea" required="required">
+                <option value="Yes">YES</option>
+                <option value="NO">NO</option>
+            </select>
+
+
+	<h3>Who have completed the test ?</h3><br><select name="relation" id="fuel" required="required">
+                <option value="Self">Self</option>
+                <option value="Parent">Parent</option>
+                <option value="HealthCare Professionals">HealthCare Professionals</option>
+		<option value="Others">Others</option>
+            </select>
+
+
+          
+            <br><br><button id="sub" type="submit ">PREDICT</button>
+            <br>
+        </form>
+
+        <br><br><h3>{{ prediction_text }}</h3>
+<br><br>
+
+
+
+        </form>
+
+
+
+
+
+
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>

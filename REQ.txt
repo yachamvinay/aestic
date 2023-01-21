@@ -1,0 +1,6 @@
+python version 3.6
+flask
+pickle
+pandas
+sklearn processing
+RFC
